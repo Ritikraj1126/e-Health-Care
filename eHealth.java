@@ -57,14 +57,18 @@ public class Main {
                     }
                 }
 
-            System.out.println("Please Enter Y if you are completely satisfied by our suggestion");
-            Scanner sat = new Scanner(System.in);
-            String satisfied = sat.next();
-            if(satisfied.toUpperCase().equals("Y")){
-                //Update information to the database only if the user is satisfied.
-                statement.execute("insert into user values('" + name + "'," + age + ",'" + dis + "','" + med + "');"
-                );
-            }
+                if(matched) {
+                    System.out.println("Please Enter Y if you are completely satisfied by our suggestion");
+                    Scanner sat = new Scanner(System.in);
+                    String satisfied = sat.next();
+                    if (satisfied.toUpperCase().equals("Y")) {
+                        //Update information to the database only if the user is satisfied.
+                        statement.execute("insert into user values('" + name + "'," + age + ",'" + dis + "','" + med + "');"
+                        );
+                    }
+                }else{
+                    System.out.println("We couldn't find a suitable cure for you.Please visit to a nearby hospital.");
+                }
 
 //                res.close();
 //                statement.close();
